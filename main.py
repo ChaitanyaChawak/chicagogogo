@@ -16,10 +16,10 @@ class Chicagoify:
             self.east = input('Number of blocks away to east : ')
             self.west = input('Number of blocks away to west : ')
 
-            if self.north and self.south != 0 :
+            if self.north and self.south != '0' :
                 raise Exception("The place cannot be both North and South at the same time !")
             
-            if self.east and self.west != 0 :
+            if self.east and self.west != '0' :
                 raise Exception("The place cannot be both East and West at the same time !")
 
         else:
