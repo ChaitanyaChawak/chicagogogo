@@ -2,6 +2,7 @@
 
 from geopy.geocoders import Nominatim
 
+## This give the exceptions and lenght of every street
 class Constants():
     def __init__(self):
         self.mpd = (24901.92 / 360)
@@ -16,9 +17,10 @@ class Constants():
         self.thirtyfirst = 41.8382902
 
         self.b_lat = 41.88205727768228
-        self.b.long = -87.62783047240069
+        self.b_long = -87.62783047240069
 
 c = Constants()
+
 
 class Chicagoify:
     """
@@ -59,6 +61,11 @@ class Chicagoify:
                 raise Exception("The place cannot be both East and West at the same time !")
 
         else:
-            self.address = self.question
+            self.address = input('Give me the address: ')	## Here they should enter the address
+            geolocator = Nominatim(user_agent="address_converter")
+
+        	## If the address is good we get latitude and longitude
+            if self.address:
+                self = geolocator.geocode(self.address)
 
 Chicagoify()
