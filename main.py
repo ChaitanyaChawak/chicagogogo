@@ -20,7 +20,7 @@ class Chicagoify:
         bpd_n_rc = mpd * 10
         bpd_n_ct = mpd * 9
         bpd_n = mpd * 8
-        bpd_w = mpd * 8
+        bpd_w = mpd * 6
 
         roosevelt = 41.8674224
         cermak = 41.8528516
@@ -124,23 +124,30 @@ class Chicagoify:
         self.question = input("Type \'blocks\' if you want to get the number of blocks from the center of Chicago, else type \'address\' to get the address given the number of blocks : ")
         if self.question == 'address':
             self.north = input('Number of blocks away to north : ')
+
+            blocks_away_latitude, blocks_away_longitude = 0, 0
+            direction_latitude, direction_longitude = 'north', 'east'
             try:
                 float(self.north)
+                if self.north != '0' : direction_latitude, blocks_away_latitude = 'north', float(self.north)
             except ValueError:
                 raise Exception("Please enter a valid positive number !!")
             self.south = input('Number of blocks away to south : ')
             try:
                 float(self.south)
+                if self.south != '0' : direction_latitude, blocks_away_latitude = 'south', float(self.south)
             except ValueError:
                 raise Exception("Please enter a valid positive number !!")
             self.east = input('Number of blocks away to east : ')
             try:
                 float(self.east)
+                if self.east != '0' : direction_longitude, blocks_away_longitude = 'east', float(self.east)
             except ValueError:
                 raise Exception("Please enter a valid positive number !!")
             self.west = input('Number of blocks away to west : ')
             try:
                 float(self.west)
+                if self.west != '0' : direction_longitude, blocks_away_longitude = 'west', float(self.west)
             except ValueError:
                 raise Exception("Please enter a valid positive number !!")
 
@@ -149,7 +156,11 @@ class Chicagoify:
             
             if self.east != '0' and self.west != '0' :
                 raise Exception("The place cannot be both East and West at the same time !")
-
+            
+            lat, long = calculate_latitude_longitude(blocks_away_latitude, direction_latitude, blocks_away_longitude, direction_longitude)
+            address = get_address_from_coordinates(lat, long)
+            print(address)
+            
         else:
             self.address = input('Give me the address: ')	## Here they should enter the address
             lat, long = get_coordinates(self.address)
