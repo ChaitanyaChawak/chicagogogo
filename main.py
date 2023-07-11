@@ -42,16 +42,16 @@ class Chicagoify:
         def get_address_from_coordinates(latitude, longitude):
             geolocator = Nominatim(user_agent="address_converter")
             location = geolocator.reverse(f"{latitude}, {longitude}")
-            
+
             address = location.raw['address']
-            
+
             amenity = address.get('amenity', '')
             house_number = address.get('house_number', '')
             road = address.get('road', '')
             city = address.get('city', '')
             postcode = address.get('postcode', '')
             country = address.get('country', '')
-            
+
             formatted_address = ''
             if amenity:
                 formatted_address += f"{amenity}, "
@@ -68,6 +68,11 @@ class Chicagoify:
                 formatted_address += f", {postcode}"
             if country:
                 formatted_address += f", {country}"
+
+            precise_location = f"[{latitude}, {longitude}]"
+
+            if not house_number:
+                print("The precise location can also be found as:", precise_location)
             
             return formatted_address.strip(", ")
         
