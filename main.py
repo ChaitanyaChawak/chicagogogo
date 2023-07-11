@@ -12,6 +12,22 @@ class Chicagoify:
 
     def __init__(self):
 
+        #Miles per degree
+        mpd = (24901.92 / 360)
+
+        # Blocks per degree
+        bpd_n_mr = mpd * 12
+        bpd_n_rc = mpd * 10
+        bpd_n_ct = mpd * 9
+        bpd_n = mpd * 8
+        bpd_w = mpd * 8
+
+        roosevelt = 41.8674224
+        cermak = 41.8528516
+        thirtyfirst = 41.8382902
+
+        b_latitude, b_longitude = 41.88205727768228, -87.62783047240069
+
         def get_coordinates(address):
             geolocator = Nominatim(user_agent="address_converter")
             location = geolocator.geocode(address)
@@ -56,24 +72,6 @@ class Chicagoify:
             return formatted_address.strip(", ")
         
         def calculate_blocks_away(latitude, longitude):
-            # Miles per degree
-            mpd = (24901.92 / 360)
-
-            # Blocks per degree
-            bpd_n_mr = mpd * 12
-            bpd_n_rc = mpd * 10
-            bpd_n_ct = mpd * 9
-            bpd_n = mpd * 8
-            bpd_w = mpd * 8
-
-            roosevelt = 41.8674224
-            cermak = 41.8528516
-            thirtyfirst = 41.8382902
-            
-            # Baseline
-            b_latitude, b_longitude = 41.88205727768228, -87.62783047240069
-
-
             if latitude > b_latitude:
                 blocks_away_latitude = (latitude - b_latitude) * bpd_n
                 direction_latitude = "north"
@@ -98,6 +96,28 @@ class Chicagoify:
                 direction_longitude = "west"
 
             return blocks_away_latitude, direction_latitude, blocks_away_longitude, direction_longitude
+        
+        def calculate_latitude_longitude(blocks_away_latitude, direction_latitude, blocks_away_longitude, direction_longitude):
+            latitude = longitude = None
+
+            if direction_latitude == "north":
+                latitude = b_latitude + (blocks_away_latitude / bpd_n)
+            elif direction_latitude == "south":
+                if blocks_away_latitude <= (b_latitude - roosevelt) * bpd_n_mr:
+                    latitude = b_latitude - (blocks_away_latitude / bpd_n_mr)
+                elif blocks_away_latitude <= (b_latitude - roosevelt) * bpd_n_mr + (roosevelt - cermak) * bpd_n_rc:
+                    latitude = roosevelt - (blocks_away_latitude - (b_latitude - roosevelt) * bpd_n_mr) / bpd_n_rc
+                elif blocks_away_latitude <= (b_latitude - roosevelt) * bpd_n_mr + (roosevelt - cermak) * bpd_n_rc + (cermak - thirtyfirst) * bpd_n_ct:
+                    latitude = cermak - (blocks_away_latitude - (b_latitude - roosevelt) * bpd_n_mr - (roosevelt - cermak) * bpd_n_rc) / bpd_n_ct
+                else:
+                    latitude = thirtyfirst - (blocks_away_latitude - (b_latitude - roosevelt) * bpd_n_mr - (roosevelt - cermak) * bpd_n_rc - (cermak - thirtyfirst) * bpd_n) / bpd_n
+
+            if direction_longitude == "east":
+                longitude = b_longitude + (blocks_away_longitude / bpd_w)
+            elif direction_longitude == "west":
+                longitude = b_longitude - (blocks_away_longitude / bpd_w)
+
+            return latitude, longitude
 
 
         ## this part asks the user for their input and then uses the above functions to carry the required actions
