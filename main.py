@@ -134,24 +134,28 @@ class Chicagoify:
             direction_latitude, direction_longitude = 'north', 'east'
             try:
                 float(self.north)
+                if float(self.north) > 22000 : raise Exception("Too far north :P")
                 if self.north != '0' : direction_latitude, blocks_away_latitude = 'north', float(self.north)
             except ValueError:
                 raise Exception("Please enter a valid positive number !!")
             self.south = input('Number of blocks away to south : ')
             try:
                 float(self.south)
+                if float(self.south) > 67000 : raise Exception("Too far south :P")
                 if self.south != '0' : direction_latitude, blocks_away_latitude = 'south', float(self.south)
             except ValueError:
                 raise Exception("Please enter a valid positive number !!")
             self.east = input('Number of blocks away to east : ')
             try:
                 float(self.east)
+                if float(self.east) > 95000 : raise Exception("Too far east :P")
                 if self.east != '0' : direction_longitude, blocks_away_longitude = 'east', float(self.east)
             except ValueError:
                 raise Exception("Please enter a valid positive number !!")
             self.west = input('Number of blocks away to west : ')
             try:
                 float(self.west)
+                if float(self.east) > 95000 : raise Exception("Too far east :P")
                 if self.west != '0' : direction_longitude, blocks_away_longitude = 'west', float(self.west)
             except ValueError:
                 raise Exception("Please enter a valid positive number !!")
