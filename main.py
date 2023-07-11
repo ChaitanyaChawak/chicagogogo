@@ -99,6 +99,8 @@ class Chicagoify:
 
             return blocks_away_latitude, direction_latitude, blocks_away_longitude, direction_longitude
 
+
+        ## this part asks the user for their input and then uses the above functions to carry the required actions
         self.question = input("Type \'blocks\' if you want to get the number of blocks from the center of Chicago, else type \'address\' to get the address given the number of blocks : ")
         if self.question == 'address':
             self.north = input('Number of blocks away to north : ')
@@ -122,10 +124,10 @@ class Chicagoify:
             except ValueError:
                 raise Exception("Please enter a valid positive number !!")
 
-            if self.north and self.south != '0' :
+            if self.north != '0' and self.south != '0' :
                 raise Exception("The place cannot be both North and South at the same time !")
             
-            if self.east and self.west != '0' :
+            if self.east != '0' and self.west != '0' :
                 raise Exception("The place cannot be both East and West at the same time !")
 
         else:
@@ -134,9 +136,8 @@ class Chicagoify:
             
             blocks_away_lat, direction_lat, blocks_away_lon, direction_lon = calculate_blocks_away(lat, long)
                 
-            print(f"{blocks_away_lat} blocks {direction_lat}")
-            print(f"{blocks_away_lon} blocks {direction_lon}")
+            print(f"{blocks_away_lat:.2f} blocks {direction_lat}")
+            print(f"{blocks_away_lon:.2f} blocks {direction_lon}")
 
     
-
 Chicagoify()
