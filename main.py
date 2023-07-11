@@ -15,6 +15,9 @@ class Constants():
         self.cermak = 41.8528516
         self.thirtyfirst = 41.8382902
 
+        self.b_lat = 41.88205727768228
+        self.b.long = -87.62783047240069
+
 c = Constants()
 
 class Chicagoify:
