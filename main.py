@@ -170,7 +170,7 @@ class Chicagoify:
             address = get_address_from_coordinates(lat, long)
             print(address)
             
-        else:
+        elif self.question == 'address':
             self.address = input('Give me the address: ')	## Here they should enter the address
             lat, long = get_coordinates(self.address)
             
@@ -178,6 +178,9 @@ class Chicagoify:
                 
             print(f"{blocks_away_lat:.2f} blocks {direction_lat}")
             print(f"{blocks_away_lon:.2f} blocks {direction_lon}")
+
+        else :
+            raise Exception("IDK what you're saying lol")
 
     
 Chicagoify()
