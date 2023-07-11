@@ -1,5 +1,22 @@
 # this is the main file where the functions exist
 
+from geopy.geocoders import Nominatim
+
+class Constants():
+    def __init__(self):
+        self.mpd = (24901.92 / 360)
+        self.n_mr = self.mpd * 12
+        self.n_rc = self.mpd * 10
+        self.n_ct = self.mpd * 9
+        self.n = self.mpd * 8
+        self.c = self.mpd * 8
+
+        self.roosevelt = 41.8674224
+        self.cermak = 41.8528516
+        self.thirtyfirst = 41.8382902
+
+c = Constants()
+
 class Chicagoify:
     """
     This converts a given address into the number of blocks it is away from the center of Chicago, and vice versa!
