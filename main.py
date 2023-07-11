@@ -155,7 +155,7 @@ class Chicagoify:
             self.west = input('Number of blocks away to west : ')
             try:
                 float(self.west)
-                if float(self.east) > 95000 : raise Exception("Too far east :P")
+                if float(self.east) > 95000 : raise Exception("Too far west :P")
                 if self.west != '0' : direction_longitude, blocks_away_longitude = 'west', float(self.west)
             except ValueError:
                 raise Exception("Please enter a valid positive number !!")
@@ -178,7 +178,7 @@ class Chicagoify:
                 
             print(f"{blocks_away_lat:.2f} blocks {direction_lat}")
             print(f"{blocks_away_lon:.2f} blocks {direction_lon}")
-
+    
         else :
             raise Exception("IDK what you're saying lol")
 
