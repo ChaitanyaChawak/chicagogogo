@@ -18,6 +18,6 @@ def get_requires():
 setup(
     name="Chicagogogo",
     version=get_property("__version__", "orbitize"),
-    packages=find_packages
+    packages=find_packages,
     install_requires=get_requires()
 )
