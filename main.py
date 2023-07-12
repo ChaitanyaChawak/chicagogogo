@@ -170,7 +170,7 @@ class Chicagoify:
             address = get_address_from_coordinates(lat, long)
             print(address)
             
-        elif self.question == 'address':
+        elif self.question == 'blocks':
             self.address = input('Give me the address: ')	## Here they should enter the address
             lat, long = get_coordinates(self.address)
             
