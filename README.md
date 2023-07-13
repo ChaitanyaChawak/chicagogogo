@@ -12,9 +12,11 @@ Additionally, chicagogogo offers functions that can provide the latitude and lon
 
 `pip install chicagogogo`
 
-`cd ./chicagogogo`
+then open a python interpreter and run the following commands
 
-`python main.py`
+`import chicagogogo.main as gogo`
+
+`gogo.Chicagoify()`
 
 This will cause Chicagogogo to start running on your machine.
 # How To Use
