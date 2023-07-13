@@ -222,4 +222,27 @@ class Chicagoify:
     
         else :
             raise Exception("IDK what you're saying lol")
+        
+
+        def sanity_check(address):
+            """
+            Takes an address inputted by the user and outputs as similar an address as Chicagogogo can. Used to measure accuracy.
+            Inputs: address (str)
+            Outputs: address (str)
+            Example: Inputs "1800 Sherman Ave Evanston"
+            Output: '1800 Sherman Avenue, 60201, United States'
+            """
+            coords = get_coordinates(address)
+            blocks = calculate_blocks_away(coords[0], coords[1])
+            a = calculate_latitude_longitude(blocks[0], blocks[1], blocks[2], blocks[3])
+            lat = a[0]
+            long = a[1]
+            print(blocks)
+            
+            try:
+                address1 = get_address_from_coordinates(lat, long)
+            except AttributeError:
+                address1 = f"[{lat}, {long}]"
+            
+            return address1
 
