@@ -223,5 +223,3 @@ class Chicagoify:
         else :
             raise Exception("IDK what you're saying lol")
 
-    
-Chicagoify()
