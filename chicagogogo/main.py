@@ -20,7 +20,7 @@ class Chicagoify:
         bpd_n_rc = mpd * 10
         bpd_n_ct = mpd * 9
         bpd_n = mpd * 8
-        bpd_w = mpd * 6
+        bpd_w = mpd * 8
 
         roosevelt = 41.8674224
         cermak = 41.8528516
