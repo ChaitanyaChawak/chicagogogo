@@ -225,6 +225,3 @@ class Chicagoify:
 
     
 Chicagoify()
-
-
-get_address_from_coordinates(37.37435780397644, -86.0676620096031)
