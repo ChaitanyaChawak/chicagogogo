@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+#import numpy, sys
 import re
 
 # auto-updating version code stolen from RadVel
@@ -16,8 +17,8 @@ def get_requires():
     return reqs
 
 setup(
-    name="Chicagogogo",
-    version=get_property("__version__", "orbitize"),
-    packages=find_packages,
+    name="codeastro_19",
+    version=get_property("__version__", "codeastro_19"),
+#    packages=find_packages,
     install_requires=get_requires()
 )
