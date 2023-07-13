@@ -39,7 +39,19 @@ class Chicagoify:
             else:
                 return None
             
+        
         def get_address_from_coordinates(latitude, longitude):
+            """
+            Inputs: latitude, longitude
+                - latitude: float, value from -90 to 90
+                - longitude: float, value from -180 to 180
+            Outputs: formatted address, which includes the latitude and longitude if no house number is given in the output
+
+            Ex. get_address_from_coordinates(38, -86)
+            Outputs: The precise location can also be found as: [38, -86]. 
+            'OLD HWY 111 SE, 47117, United States'
+
+            """
             geolocator = Nominatim(user_agent="address_converter")
             location = geolocator.reverse(f"{latitude}, {longitude}")
 
@@ -77,6 +89,19 @@ class Chicagoify:
             return formatted_address.strip(", ")
         
         def calculate_blocks_away(latitude, longitude):
+            """
+            Inputs: latitude, longitude
+                - latitude: float, value from -90 to 90
+                - longitude: float, value from -180 to 180
+            Outputs: array of blocks away (north/south, east/west) from the intersection of State St and Madison St in Chicago
+                - blocks_away_latitude: float, value >= 0
+                - direction_latitude: string, either 'north' or 'south'
+                - blocks_away_longitude: float, value >= 0
+                - direction_longitude: string, either 'east' or 'west'
+
+            Ex. calculate_blocks_away(38, -86)
+            Outputs: (2155.309647046862, 'south', 900.8023154952035, 'east')
+            """
             if latitude > b_latitude:
                 blocks_away_latitude = (latitude - b_latitude) * bpd_n
                 direction_latitude = "north"
@@ -103,6 +128,22 @@ class Chicagoify:
             return blocks_away_latitude, direction_latitude, blocks_away_longitude, direction_longitude
         
         def calculate_latitude_longitude(blocks_away_latitude, direction_latitude, blocks_away_longitude, direction_longitude):
+            """
+            Inputs: blocks_away_latitude, direction_latitude, blocks_away_longitude, direction_longitude
+                - blocks_away_latitude: float, value >= 0
+                - direction_latitude: string, either 'north' or 'south'
+                - blocks_away_longitude: float, value >= 0
+                - direction_longitude: string, either 'east' or 'west'
+
+            Outputs: array of blocks away (north/south, east/west) from the intersection of State St and Madison St in Chicago
+                - blocks_away_latitude: float, value >= 0
+                - direction_latitude: string, either 'north' or 'south'
+                - blocks_away_longitude: float, value >= 0
+                - direction_longitude: string, either 'east' or 'west'
+
+            Ex. calculate_latitude_longitude(72.14, 'north', 64.84, 'west')
+            Outputs: 6300 West Touhy Avenue, 60714, United States
+            """
             latitude = longitude = None
 
             if direction_latitude == "north":
@@ -184,3 +225,6 @@ class Chicagoify:
 
     
 Chicagoify()
+
+
+get_address_from_coordinates(37.37435780397644, -86.0676620096031)
