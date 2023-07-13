@@ -1,6 +1,6 @@
 <p>
 <center>
-<img width=500 src="https://github.com/ChaitanyaChawak/chicagogogo/blob/main/chicagogogo/Screen%20Shot%202023-07-13%20at%202.35.04%20PM.png?raw=true"></img>
+<img width=500 src="https://github.com/ChaitanyaChawak/chicagogogo/blob/main/chicagogogo/logo.png?raw=true"></img>
 </center>
 
 # chicagogogo
