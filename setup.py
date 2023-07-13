@@ -16,8 +16,8 @@ def get_requires():
     return reqs
 
 setup(
-    name="codeastro_19",
-    version=get_property("__version__", "codeastro_19"),
+    name="chicagogogo",
+    version=get_property("__version__", "chicagogogo"),
 #    packages=find_packages,
     install_requires=get_requires()
 )
