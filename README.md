@@ -6,6 +6,8 @@
 # chicagogogo
 Like many other cities around the world, Chicago is a city built on a grid system. Unfortunately, many suburbs of Chicago, including Evanston (as well as the rest of the world) do not subscribe to this way to map the world. With Chicagogogo, we make a quick and easy-to-use package that will give you the number of blocks away from a given address-- the corner of State St and Madison St, the center of the downtown Loop and the center of Chicago! It can also give you the address of a location given the number of blocks away from the center of Chicago. 
 
+Additionally, chicagogogo offers functions that can provide the latitude and longitude of any location globally and their precise location. This relies on funcionality from `Nominatim`, which is installed with your installation of `chicagogogo`.
+
 # Installation Instructions:
 
 `pip install chicagogogo`
