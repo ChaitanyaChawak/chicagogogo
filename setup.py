@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-#import numpy, sys
 import re
 
 # auto-updating version code stolen from RadVel
